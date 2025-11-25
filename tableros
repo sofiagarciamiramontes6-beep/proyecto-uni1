@@ -97,7 +97,7 @@ def mostrarTabTK(guia,tablero,root):
             else:
                 letra=tablero[f][c]
                 cel=tk.Label(root,
-                             text="X",
+                             text=" ",
                              fg="#9370D8",
                              width=2,
                              height=1,
