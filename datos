@@ -1,0 +1,17 @@
+palabras=["VARIABLE","ARREGLO","FOR","FLOAT","LISTAS","STRING","ISC","CICLOS","NUMPY","PYTHON"]
+orient=["H","V","H","V","V","H","V","H","H","V"]
+preguntas=[
+    "caracter donde almacenas un valor temporalmente",
+    "estructura de datos que alamcena un conjunto de elementos del mismo tipo",
+    "ciclo que se caracteriza por ser automatico",
+    "tipo de dato que usa decimales",
+    "estructura de datos que alamcena datos de cualquier tipo",
+    "tipo de dato donde se almacenan cadenas",
+    "siglas de la carrera que estudias",
+    "permiten ejecutar un bloque de codigo repetidamente",
+    "libreria de Python utilizada para arreglos",
+    "lenguaje de programacion de codigo abierto,tiene librerias como Numpy"
+]
+   
+filIn=[2,1,7,7,2,4,4,6,2,2]
+colIn=[1,3,2,2,7,7,10,10,11,14]
