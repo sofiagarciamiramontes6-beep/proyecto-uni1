@@ -1,0 +1,85 @@
+from Datos import palabras, preguntas, orient, filIn, colIn
+import tableros as tb
+import tkinter as tk
+
+tablero =tb.crearTab()
+guiA = tb.equisGuia()
+
+longi=len(palabras)
+for i in range(longi):
+    tb.letrAs(guiA, palabras[i], filIn[i], colIn[i], orient[i])
+    
+root=tk.Tk()
+tb.mostrarTabTK(guiA,tablero,root)
+root.mainloop()
+    
+
+
+respondidas = [False] * longi
+
+band=True
+
+while band==True:
+    print("\n    CRUCIGRAMA DE LA CARRERA: ISC")
+
+    tb.mostrarTab(tablero, guiA)
+
+    print("¿Qué numero de pregunta quieres responder? (1-10)")
+    num = input("Número: ")
+    lonNUM=len(num)
+    valido=True
+    for i in range (lonNUM):
+        car=num[i]
+        if car<"0" or car>"9":
+            valido=False
+
+    if valido==True:
+            num = int(num)
+            indice = num - 1
+    else:
+        print("debes escoger un numero.")
+
+
+    if valido == True:
+        if indice < 0 or indice >= longi:
+            print("\nEsa opcion no existe.")
+            valido = False
+
+
+    if valido == True:
+        if respondidas[indice] == True:
+            print("\nEsa palabra ya está hecha.")
+            valido = False
+
+    if valido == False:
+        pass
+
+    else:
+        
+        print("\nPista:", preguntas[indice])
+        resp = input("Tu respuesta: ").upper()
+
+        
+        if resp == palabras[indice]:
+            print("\n¡Correcto!")
+            respondidas[indice] = True
+
+            tb.colocar_palabra(tablero,palabras[indice],filIn[indice],colIn[indice],orient[indice])
+            
+        else:
+            print("\nIncorrecto, intenta de nuevo.")
+
+
+    completo = True
+
+    for r in respondidas:
+        if r == False:
+            completo = False
+            
+
+    if completo == True:
+        tb.mostrarTab(tablero, guiA)
+        print("¡¡¡CRUCIGRAMA COMPLETADO!!!")
+        band=False
+
+
