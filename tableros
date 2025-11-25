@@ -1,0 +1,111 @@
+from numpy import *
+
+
+fil=12
+colu=18
+
+def crearTab():
+    tablero = []
+    for f in range(fil):
+        fila = []
+        for c in range(colu):
+            fila.append(" ")
+        tablero.append(fila)
+    return tablero
+
+
+def equisGuia():
+    guia = []
+    for f in range(fil):
+        fila = []
+        for c in range(colu):
+            fila.append("_")  
+        guia.append(fila)
+    return guia
+
+
+def letrAs(guia, palabra, fila, col, ori):
+    if ori=="H":
+        for i in range(len(palabra)):
+            guia[fila][col+i]=("X")
+    if ori=="V":
+        for i in range(len(palabra)):
+            guia[fila + i][col]=("X")
+
+        
+def mostrarTab(tablero, guia):
+    print('')
+    for f in range(fil):
+        for c in range(colu):
+            if guia[f][c] == "X" and tablero[f][c] == " ":
+                print("X", end=" ")
+            elif guia[f][c] == "_" and tablero[f][c] == " ":
+                print(" ", end=" ")
+            else:
+                print(tablero[f][c], end=" ")
+        print('')
+
+    print('')
+        
+      
+def colocar_palabra(tablero, palabra, fila, col, ori):
+    longi2=len(palabra)
+    if ori == "H":
+        for i in range(longi2):
+            tablero[fila][col + i]=palabra[i]
+
+    elif ori == "V":
+        for i in range(longi2):
+            tablero[fila + i][col]=palabra[i]
+
+
+
+import tkinter as tk
+from Datos import palabras, preguntas, orient, filIn, colIn
+from tkinter import ttk
+
+
+
+def mostrarTabTK(guia,tablero,root):
+    root.title("CRUCIGRAMA ISC")
+    root.geometry("600x3000")#tama;o de la pesta;a
+    root.configure(background="white")#color fondo
+    tk.Wm.wm_title(root, "CRUCIGRAMA")
+    titulo = tk.Label(root,
+                      text="CRUCIGRAMA DE LA CARRERA: ISC",
+                      justify="center",
+                      fg="#9370D8",#color de las letras
+                      bg="white",
+                      font=("Cormorant Garamond", 36,"bold",))
+    titulo.grid(row=0, column=0, pady=10)#donde queda
+    fila=len(guia[0])
+    columnas=len(guia[0])
+    celdas=[]
+    for f in range (fila):
+        fila=[]
+        for c in range(columnas):
+            if guia[f][c]!="X":
+                cel=tk.Label(root,
+                             text=" ",
+                             width=2,
+                             height=1,
+                             relief="solid",
+                             bd=1,
+                             bg="white",
+                             font=("Arial",18))
+
+            else:
+                letra=tablero[f][c]
+                cel=tk.Label(root,
+                             text="X",
+                             fg="#9370D8",
+                             width=2,
+                             height=1,
+                             font=("Arial", 18),
+                             bd=2,
+                             relief="solid",
+                             bg="white")
+                cel.grid(row=f+1,column=c,padx=1,pady=1)
+            fila.append(cel)
+        celdas.append(fila)
+    return celdas
