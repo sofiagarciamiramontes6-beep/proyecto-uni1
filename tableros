@@ -78,7 +78,7 @@ def mostrarTabTK(guia,tablero,root):
                       bg="white",
                       font=("Cormorant Garamond", 36,"bold",))
     titulo.grid(row=0, column=0, pady=10)#donde queda
-    fila=len(guia[0])
+    fila=len(guia)
     columnas=len(guia[0])
     celdas=[]
     for f in range (fila):
